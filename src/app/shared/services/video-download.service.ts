@@ -144,12 +144,12 @@ export class VideoDownloadService {
     process.on('close', (code) => {
       if (code === 0) {
         console.log('Download completed');
+        this.shell.openPath(outputDir);
       }
 
       console.log(`spawnDownload() exited with code ${code}`);
       this.zone.run(() => this.spawnOutput$.next(''));
       this.zone.run(() => this.isDownloading$.next(false));
-      this.shell.openPath(outputDir);
     });
   }
 
