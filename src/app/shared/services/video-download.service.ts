@@ -15,6 +15,8 @@ const ffmpegPath = window
   providedIn: 'root',
 })
 export class VideoDownloadService {
+  readonly STORAGE_OUTPUT_DIRECTORY_KEY = 'output.directory';
+
   shell: typeof shell;
   remote: typeof remote;
   childProcess: typeof childProcess;
@@ -68,7 +70,8 @@ export class VideoDownloadService {
   }
 
   private initializeOutoutDirectory() {
-    this.outputDirectory = this.path.join(this.os.homedir(), 'video-downloads');
+    this.outputDirectory =
+      this.load() ?? this.path.join(this.os.homedir(), 'video-downloads');
   }
 
   changeOutputDirectory() {
@@ -82,6 +85,8 @@ export class VideoDownloadService {
     })[0];
 
     const directory = selectedDirectory ?? defaultDirectory;
+
+    this.save(directory);
 
     this.outputDirectory = directory;
   }
@@ -250,5 +255,13 @@ export class VideoDownloadService {
     return this.fs.readdirSync(dir).filter((file) => {
       return this.fs.statSync(`${dir}/${file}`).isFile();
     });
+  }
+
+  load() {
+    return localStorage.getItem(this.STORAGE_OUTPUT_DIRECTORY_KEY);
+  }
+
+  save(value: string) {
+    localStorage.setItem(this.STORAGE_OUTPUT_DIRECTORY_KEY, value);
   }
 }
