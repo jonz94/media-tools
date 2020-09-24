@@ -1,0 +1,66 @@
+<ng-container *transloco="let t">
+  <ion-header mode="ios">
+    <ion-toolbar mode="md">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>{{ t('videoDownloader') }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list class="px-8" lines="none">
+      <h1 class="ml-4">{{ t('video.step') }} 1.</h1>
+      <ion-item lines="full" (contextmenu)="presentContextMenu($event)">
+        <ion-label position="floating">{{ t('video.step1Hint') }}</ion-label>
+        <ion-textarea autoGrow="true" [(ngModel)]="url"></ion-textarea>
+      </ion-item>
+
+      <ng-container *ngIf="url">
+        <h1 class="ml-4">
+          {{ t('video.step') }} 2. {{ t('video.download.title') }}
+        </h1>
+
+        <div class="flex flex-col">
+          <div>
+            <p>{{ t('video.destination') }}: {{ outputDirectory }}</p>
+            <ion-button
+              color="secondary"
+              class="mb-4"
+              (click)="changeOutoutDirectory()"
+            >
+              {{ t('video.edit') }}
+            </ion-button>
+          </div>
+
+          <div class="flex flex-col max-w-content">
+            <ion-button
+              (click)="downloadAll()"
+              [disabled]="isDownloading$ | async"
+            >
+              {{ t('video.download.all') }}
+            </ion-button>
+
+            <ion-button (click)="downloadSubtitle()">
+              {{ t('video.download.subtitle') }}
+            </ion-button>
+
+            <ion-button
+              (click)="downloadVideo()"
+              [disabled]="isDownloading$ | async"
+            >
+              {{ t('video.download.video') }}
+            </ion-button>
+          </div>
+        </div>
+
+        <ng-container *ngIf="spawnOutput$ | async as spawnOutput">
+          <h1>{{ t('video.downloading') }}</h1>
+          <ion-item>
+            <pre class="truncate">{{ spawnOutput }}</pre>
+          </ion-item>
+        </ng-container>
+      </ng-container>
+    </ion-list>
+  </ion-content>
+</ng-container>

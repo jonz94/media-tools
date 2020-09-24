@@ -1,0 +1,13 @@
+{
+  "step": "步驟",
+  "step1Hint": "在這裡貼上影片連結",
+  "destination": "下載目的地資料夾",
+  "edit": "修改目的地資料夾...",
+  "download": {
+    "title": "下載",
+    "video": "僅下載影片",
+    "subtitle": "僅下載字幕",
+    "all": "下載影片與字幕"
+  },
+  "downloading": "下載中..."
+}

@@ -1,0 +1,13 @@
+{
+  "step": "Step",
+  "step1Hint": "Paste video's url here",
+  "destination": "Destination",
+  "edit": "Edit Destination...",
+  "download": {
+    "title": "Download",
+    "video": "Download video alone",
+    "subtitle": "Download subtitle alone",
+    "all": "Download video and subtitle"
+  },
+  "downloading": "Downloading..."
+}

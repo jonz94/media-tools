@@ -1,0 +1,6 @@
+{
+  "files.autoSave": "onWindowChange",
+
+  "typescript.tsdk": "/Users/jonz94/repos/media-tools/node_modules/typescript/lib",
+  "javascript.implicitProjectConfig.experimentalDecorators": true
+}

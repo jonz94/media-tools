@@ -1,0 +1,67 @@
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" type="overlay" *transloco="let t">
+      <ion-content>
+        <ion-list id="inbox-list">
+          <ion-list-header>Media Tools</ion-list-header>
+          <ion-note>
+            <span>Crafted with</span>
+            <ion-text color="danger" class="mx-1">❤</ion-text>
+            <span>by JoNz94</span>
+          </ion-note>
+
+          <ion-menu-toggle
+            auto-hide="false"
+            *ngFor="let page of pages; let i = index"
+          >
+            <ion-item
+              (click)="selectedIndex = i"
+              routerDirection="root"
+              [routerLink]="[page.url]"
+              lines="none"
+              detail="false"
+              [class.selected]="selectedIndex == i"
+            >
+              <ion-icon slot="start" [name]="page.icon"></ion-icon>
+              <ion-label>{{ t(page.title) }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+
+        <ion-list class="space-y-1" lines="none">
+          <ion-list-header class="text-xl font-semibold">
+            {{ t('settings') }}
+          </ion-list-header>
+          <ion-item>
+            <ion-icon name="language" color="black"></ion-icon>
+            <ion-label class="ml-2">{{ t('language') }}</ion-label>
+            <ion-select
+              interface="popover"
+              [value]="currentLocale"
+              (ionChange)="changeLocale($event.detail.value)"
+            >
+              <ion-select-option value="en">English</ion-select-option>
+              <ion-select-option value="zh-TW">繁體中文</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+            <ion-icon
+              color="black"
+              [name]="isDarkModeEnabled ? 'moon' : 'sunny-outline'"
+            ></ion-icon>
+            <ion-label class="ml-2">{{ t('darkMode') }}</ion-label>
+            <ion-toggle
+              [checked]="isDarkModeEnabled"
+              (ionChange)="toggleDarkMode($event.detail.checked)"
+              color="success"
+              slot="end"
+              mode="ios"
+            ></ion-toggle>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

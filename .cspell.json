@@ -1,0 +1,21 @@
+{
+  // Version of the setting file. Always 0.1
+  "version": "0.1",
+  "language": "en",
+  "allowCompoundWords": true,
+  "ignorePaths": [
+    ".cspell.json",
+    ".git/**",
+    ".prettierrc.js",
+    ".vscode/**",
+    "dist/**",
+    "LICENSE",
+    "node_modules/**",
+    "package-lock.json",
+    "package.json",
+    "src/index.html",
+    "ts*.json"
+  ],
+  "ignoreRegExpList": [],
+  "words": ["asar", "hant", "ttml", "ytdl"]
+}
