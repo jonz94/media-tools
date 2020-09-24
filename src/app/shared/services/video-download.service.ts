@@ -93,8 +93,6 @@ export class VideoDownloadService {
 
     const outputDir = this.outputDirectory;
 
-    console.log(outputDir);
-
     if (!this.fs.existsSync(outputDir)) {
       try {
         this.fs.mkdirSync(outputDir);
@@ -185,8 +183,6 @@ export class VideoDownloadService {
       }
 
       const spawn = window.require('child_process').spawn;
-
-      console.log('sub', openPath);
 
       if (openPath) {
         this.shell.openPath(outputDir);
