@@ -1,6 +1,14 @@
+## 0.3.0 (2020-09-25)
+
+* ✨ feat(ui): add stepper ([1b5a990](https://github.com/jonz94/media-tools/commit/1b5a990))
+* 🔥 chore: remove console.log ([a63888c](https://github.com/jonz94/media-tools/commit/a63888c))
+
+
+
 ## 0.2.0 (2020-09-25)
 
 * ✨ feat: support cancel download ([1cea3d5](https://github.com/jonz94/media-tools/commit/1cea3d5))
+* 🎉 chore(release): 0.2.0 ([94a6b97](https://github.com/jonz94/media-tools/commit/94a6b97))
 
 
 
