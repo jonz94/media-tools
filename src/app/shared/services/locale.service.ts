@@ -47,11 +47,11 @@ export class LocaleService implements OnDestroy {
     this.langChangeSubscription.unsubscribe();
   }
 
-  load() {
+  private load() {
     return localStorage.getItem(this.STORAGE_LOCALE_KEY) as LocaleValue;
   }
 
-  save(value: LocaleValue) {
+  private save(value: LocaleValue) {
     localStorage.setItem(this.STORAGE_LOCALE_KEY, value);
   }
 }

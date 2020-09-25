@@ -17,12 +17,12 @@ const ffmpegPath = window
 export class VideoDownloadService {
   readonly STORAGE_OUTPUT_DIRECTORY_KEY = 'output.directory';
 
-  shell: typeof shell;
-  remote: typeof remote;
-  childProcess: typeof childProcess;
-  fs: typeof fs;
-  os: typeof os;
-  path: typeof path;
+  private shell: typeof shell;
+  private remote: typeof remote;
+  private childProcess: typeof childProcess;
+  private fs: typeof fs;
+  private os: typeof os;
+  private path: typeof path;
 
   outputDirectory = '';
   isDownloading$ = new BehaviorSubject(false);
@@ -106,7 +106,7 @@ export class VideoDownloadService {
       }
     }
 
-    const spawn = window.require('child_process').spawn;
+    const spawn = this.childProcess.spawn;
 
     const process = spawn(youtubeDl.getYtdlBinary(), [
       url,
@@ -187,7 +187,7 @@ export class VideoDownloadService {
         return console.error(error);
       }
 
-      const spawn = window.require('child_process').spawn;
+      const spawn = this.childProcess.spawn;
 
       if (openPath) {
         this.shell.openPath(outputDir);
@@ -257,11 +257,11 @@ export class VideoDownloadService {
     });
   }
 
-  load() {
+  private load() {
     return localStorage.getItem(this.STORAGE_OUTPUT_DIRECTORY_KEY);
   }
 
-  save(value: string) {
+  private save(value: string) {
     localStorage.setItem(this.STORAGE_OUTPUT_DIRECTORY_KEY, value);
   }
 }

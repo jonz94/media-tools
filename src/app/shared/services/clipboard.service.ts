@@ -5,7 +5,7 @@ import { clipboard } from 'electron';
   providedIn: 'root',
 })
 export class ClipboardService {
-  clipboard: typeof clipboard;
+  private clipboard: typeof clipboard;
 
   get isElectron(): boolean {
     return !!(window && window.process && window.process.type);

@@ -48,11 +48,11 @@ export class DarkModeService {
     this.save('off');
   }
 
-  load() {
+  private load() {
     return localStorage.getItem(this.STORAGE_DARK_MODE_KEY);
   }
 
-  save(value: DarkModeValue) {
+  private save(value: DarkModeValue) {
     localStorage.setItem(this.STORAGE_DARK_MODE_KEY, value);
   }
 }
