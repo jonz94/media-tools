@@ -9,24 +9,46 @@
   </ion-header>
 
   <ion-content>
-    <ion-list class="px-8" lines="none">
-      <h1 class="ml-4">{{ t('video.step') }} 1.</h1>
-      <ion-item lines="full" (contextmenu)="presentContextMenu($event)">
-        <ion-label position="floating">{{ t('video.step1Hint') }}</ion-label>
-        <ion-textarea autoGrow="true" [(ngModel)]="url"></ion-textarea>
+    <ion-list class="h-full p-8" lines="none">
+      <div class="flex items-center space-x-4">
+        <div
+          class="flex items-center justify-center w-12 h-12 bg-gray-700 rounded-full"
+        >
+          <h2 class="m-0 text-white">1</h2>
+        </div>
+        <div class="flex">
+          <h2 class="m-0">{{ t('video.pasteUrlHint') }}</h2>
+        </div>
+      </div>
+      <ion-item
+        class="step-container"
+        lines="inset"
+        style="--padding-start: 3rem; --inner-padding-start: 0.5rem"
+        (contextmenu)="presentContextMenu($event)"
+      >
+        <ion-input [(ngModel)]="url" [placeholder]="t('video.url')"></ion-input>
       </ion-item>
 
-      <ng-container *ngIf="url">
-        <h1 class="ml-4">
-          {{ t('video.step') }} 2. {{ t('video.download.title') }}
-        </h1>
+      <div class="flex items-center space-x-4">
+        <div
+          class="flex items-center justify-center w-12 h-12 bg-gray-700 rounded-full"
+        >
+          <h2 class="m-0 text-white">2</h2>
+        </div>
+        <div class="flex">
+          <h2 class="m-0">{{ t('video.download.title') }}</h2>
+        </div>
+      </div>
 
-        <div class="flex flex-col">
+      <ion-item class="step-container">
+        <div class="flex flex-col pl-8">
           <div>
             <p>{{ t('video.destination') }}: {{ outputDirectory }}</p>
             <ion-button
-              color="secondary"
               class="mb-4"
+              color="secondary"
+              expand="block"
+              size="default"
               (click)="changeOutoutDirectory()"
             >
               {{ t('video.edit') }}
@@ -35,35 +57,75 @@
 
           <div class="flex flex-col max-w-content">
             <ion-button
+              expand="block"
+              size="default"
               (click)="downloadAll()"
-              [disabled]="isDownloading$ | async"
+              [disabled]="(isDownloading$ | async) || !url"
             >
               {{ t('video.download.all') }}
             </ion-button>
 
-            <ion-button (click)="downloadSubtitle()">
-              {{ t('video.download.subtitle') }}
-            </ion-button>
-
             <ion-button
+              expand="block"
+              size="default"
               (click)="downloadVideo()"
-              [disabled]="isDownloading$ | async"
+              [disabled]="(isDownloading$ | async) || !url"
             >
               {{ t('video.download.video') }}
             </ion-button>
+
+            <ion-button
+              expand="block"
+              size="default"
+              (click)="downloadSubtitle()"
+              [disabled]="(isDownloading$ | async) || !url"
+            >
+              {{ t('video.download.subtitle') }}
+            </ion-button>
           </div>
         </div>
+      </ion-item>
 
-        <ng-container *ngIf="spawnOutput$ | async as spawnOutput">
-          <h1>{{ t('video.downloading') }}</h1>
-          <ion-item>
-            <pre class="truncate">{{ spawnOutput }}</pre>
-          </ion-item>
-          <ion-button color="danger" (click)="cancelDownload()">
+      <div class="flex items-center space-x-4">
+        <div
+          class="flex items-center justify-center w-12 h-12 bg-gray-700 rounded-full"
+        >
+          <h2 class="m-0 text-white">3</h2>
+        </div>
+        <div class="flex">
+          <h2 class="m-0">{{ t('video.downloading') }}</h2>
+        </div>
+      </div>
+
+      <ion-item class="step-container">
+        <div
+          class="flex flex-col pl-8"
+          *ngIf="spawnOutput$ | async as spawnOutput"
+        >
+          <pre class="truncate">{{ spawnOutput }}</pre>
+          <ion-button
+            class="max-w-content"
+            color="danger"
+            expand="block"
+            size="default"
+            (click)="cancelDownload()"
+          >
             {{ t('video.download.cancel') }}
           </ion-button>
-        </ng-container>
-      </ng-container>
+        </div>
+      </ion-item>
+
+      <div class="flex items-center space-x-4">
+        <div
+          class="flex items-center justify-center w-12 h-12 rounded-full"
+          style="background: var(--ion-color-success)"
+        >
+          <ion-icon class="w-6 h-6 text-white" name="checkmark"></ion-icon>
+        </div>
+        <div class="flex">
+          <h2 class="m-0">{{ t('video.done') }}</h2>
+        </div>
+      </div>
     </ion-list>
   </ion-content>
 </ng-container>

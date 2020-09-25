@@ -1,6 +1,7 @@
 {
   "step": "Step",
-  "step1Hint": "Paste video's url here",
+  "pasteUrlHint": "Paste video's url",
+  "url": "url",
   "destination": "Destination",
   "edit": "Edit Destination...",
   "download": {
@@ -10,5 +11,6 @@
     "all": "Download video and subtitle",
     "cancel": "Cancel download"
   },
-  "downloading": "Downloading..."
+  "downloading": "Downloading...",
+  "done": "Done"
 }
