@@ -51,8 +51,6 @@ export class VideoDownloadService {
 
       this.initializeYoutubeDl();
       this.initializeOutoutDirectory();
-
-      this.downloadProcess$.subscribe((process) => console.log(process));
     }
   }
 
