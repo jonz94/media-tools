@@ -3,13 +3,13 @@
   "version": "0.0.2",
   "private": true,
   "description": "Media tools build on top of open source giants",
-  "homepage": "https://github.com/lohasiinfra/media-tools#readme",
+  "homepage": "https://github.com/jonz94/media-tools#readme",
   "bugs": {
-    "url": "https://github.com/lohasiinfra/media-tools/issues"
+    "url": "https://github.com/jonz94/media-tools/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lohasiinfra/media-tools.git"
+    "url": "git+https://github.com/jonz94/media-tools.git"
   },
   "license": "MIT",
   "author": {
