@@ -1,6 +1,13 @@
+## <small>0.3.1 (2020-09-25)</small>
+
+* ✅ fix: resolve scroll issue ([565066e](https://github.com/jonz94/media-tools/commit/565066e))
+
+
+
 ## 0.3.0 (2020-09-25)
 
 * ✨ feat(ui): add stepper ([1b5a990](https://github.com/jonz94/media-tools/commit/1b5a990))
+* 🎉 chore(release): 0.3.0 ([ce403d7](https://github.com/jonz94/media-tools/commit/ce403d7))
 * 🔥 chore: remove console.log ([a63888c](https://github.com/jonz94/media-tools/commit/a63888c))
 
 
