@@ -5,6 +5,7 @@ import * as fs from 'fs';
 import * as os from 'os';
 import * as path from 'path';
 import { BehaviorSubject } from 'rxjs';
+import { map, take } from 'rxjs/operators';
 
 const youtubeDl = window.require('youtube-dl');
 const ffmpegPath = window
@@ -24,8 +25,12 @@ export class VideoDownloadService {
   private os: typeof os;
   private path: typeof path;
 
+  private downloadProcess$ = new BehaviorSubject<
+    childProcess.ChildProcessWithoutNullStreams
+  >(null);
+
   outputDirectory = '';
-  isDownloading$ = new BehaviorSubject(false);
+  isDownloading$ = this.downloadProcess$.pipe(map((process) => !!process));
   spawnOutput$ = new BehaviorSubject('');
 
   get isElectron(): boolean {
@@ -46,6 +51,8 @@ export class VideoDownloadService {
 
       this.initializeYoutubeDl();
       this.initializeOutoutDirectory();
+
+      this.downloadProcess$.subscribe((process) => console.log(process));
     }
   }
 
@@ -119,6 +126,8 @@ export class VideoDownloadService {
       this.path.join(outputDir, '%(title)s-%(id)s.%(ext)s'),
     ]);
 
+    this.downloadProcess$.next(process);
+
     process.stdout.on('data', (data) => {
       let output = `${data}`;
       const outputWhileDownloading = output.split('[download]')[1];
@@ -134,7 +143,6 @@ export class VideoDownloadService {
       console.log('stdout', output);
 
       this.zone.run(() => this.spawnOutput$.next(output));
-      this.zone.run(() => this.isDownloading$.next(true));
     });
 
     process.stderr.on('data', (data) => {
@@ -149,7 +157,7 @@ export class VideoDownloadService {
 
       console.log(`spawnDownload() exited with code ${code}`);
       this.zone.run(() => this.spawnOutput$.next(''));
-      this.zone.run(() => this.isDownloading$.next(false));
+      this.zone.run(() => this.downloadProcess$.next(null));
     });
   }
 
@@ -249,6 +257,20 @@ export class VideoDownloadService {
         resolve(output);
       });
     });
+  }
+
+  cancelDownloadProcess() {
+    this.downloadProcess$
+      .pipe(
+        take(1),
+
+        map((downloadProcess) => {
+          if (downloadProcess !== null) {
+            downloadProcess.kill();
+          }
+        }),
+      )
+      .subscribe();
   }
 
   private getFiles(dir) {

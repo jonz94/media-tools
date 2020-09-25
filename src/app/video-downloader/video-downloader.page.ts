@@ -12,9 +12,7 @@ import { ContextMenuComponent } from './context-menu/context-menu.component';
 export class VideoDownloaderPage {
   url = '';
 
-  isDownloading$ = this.videoDownloadService.isDownloading$
-    .asObservable()
-    .pipe(shareReplay());
+  isDownloading$ = this.videoDownloadService.isDownloading$.pipe(shareReplay());
 
   spawnOutput$ = this.videoDownloadService.spawnOutput$
     .asObservable()
@@ -76,5 +74,13 @@ export class VideoDownloaderPage {
   changeOutoutDirectory() {
     this.videoDownloadService.changeOutputDirectory();
     this.outputDirectory = this.videoDownloadService.outputDirectory;
+  }
+
+  cancelDownload() {
+    try {
+      this.videoDownloadService.cancelDownloadProcess();
+    } catch (error) {
+      console.error(error);
+    }
   }
 }

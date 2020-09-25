@@ -59,6 +59,9 @@
           <ion-item>
             <pre class="truncate">{{ spawnOutput }}</pre>
           </ion-item>
+          <ion-button color="danger" (click)="cancelDownload()">
+            {{ t('video.download.cancel') }}
+          </ion-button>
         </ng-container>
       </ng-container>
     </ion-list>
