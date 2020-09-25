@@ -1,9 +1,16 @@
+## 0.2.0 (2020-09-25)
+
+* ✨ feat: support cancel download ([1cea3d5](https://github.com/jonz94/media-tools/commit/1cea3d5))
+
+
+
 ## 0.1.0 (2020-09-25)
 
 * ♻️ refactor: minor adjustment ([641b194](https://github.com/jonz94/media-tools/commit/641b194))
 * ✅ fix: only show file manager if download succeed ([7b0a1cb](https://github.com/jonz94/media-tools/commit/7b0a1cb))
 * ✅ fix(i18n): add missing translation for `copy`/`paste` ([5c15c47](https://github.com/jonz94/media-tools/commit/5c15c47))
 * ✨ feat: remember video downloader's destination ([651f20f](https://github.com/jonz94/media-tools/commit/651f20f))
+* 🎉 chore(release): 0.1.0 ([359ed50](https://github.com/jonz94/media-tools/commit/359ed50))
 * 📝 docs: add README ([ac93b82](https://github.com/jonz94/media-tools/commit/ac93b82))
 * 🔥 chore: remove console.log ([2c34f73](https://github.com/jonz94/media-tools/commit/2c34f73))
 * 🔧 chore: change git repository's url ([8fed70d](https://github.com/jonz94/media-tools/commit/8fed70d))
