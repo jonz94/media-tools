@@ -57,7 +57,7 @@
     "@types/jasminewd2": "^2.0.8",
     "@types/node": "^12.12.62",
     "@types/youtube-dl": "^1.12.2",
-    "autoprefixer": "^10.0.0",
+    "autoprefixer": "^10.0.1",
     "codelyzer": "^6.0.1",
     "conventional-changelog-cli": "^2.1.0",
     "core-js": "^3.6.5",
