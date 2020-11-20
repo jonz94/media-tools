@@ -55,7 +55,7 @@
     "@ngneat/transloco": "^2.19.1",
     "@types/jasmine": "^3.6.2",
     "@types/jasminewd2": "^2.0.8",
-    "@types/node": "^12.12.62",
+    "@types/node": "^12.19.6",
     "@types/youtube-dl": "^1.12.2",
     "autoprefixer": "^10.0.1",
     "codelyzer": "^6.0.1",
