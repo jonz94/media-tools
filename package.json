@@ -63,7 +63,7 @@
     "core-js": "^3.6.5",
     "cross-env": "^7.0.2",
     "electron": "^10.1.6",
-    "electron-builder": "^22.8.1",
+    "electron-builder": "^22.9.1",
     "electron-reload": "^1.5.0",
     "ionicons": "^5.1.2",
     "jasmine-core": "^3.6.0",
