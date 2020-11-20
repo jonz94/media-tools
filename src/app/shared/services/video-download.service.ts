@@ -159,7 +159,7 @@ export class VideoDownloadService {
     });
   }
 
-  downloadSubtitle(url: string, openPath = true, auto = true) {
+  downloadSubtitle(url: string, lang = 'en', openPath = true, auto = true) {
     if (!this.isElectron) {
       return;
     }
@@ -173,7 +173,7 @@ export class VideoDownloadService {
       // are available ttml or vtt.
       format: 'vtt',
       // Languages of subtitles to download, separated by commas.
-      lang: 'zh-Hant',
+      lang,
       // The directory to save the downloaded files in.
       cwd: this.outputDirectory,
     };

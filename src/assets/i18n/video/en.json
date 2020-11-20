@@ -7,7 +7,8 @@
   "download": {
     "title": "Download",
     "video": "Download video alone",
-    "subtitle": "Download subtitle alone",
+    "subtitle": "Download english subtitle alone",
+    "translatedSubtitle": "Download translated subtitle alone",
     "all": "Download video and subtitle",
     "cancel": "Cancel download"
   },

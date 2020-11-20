@@ -7,7 +7,8 @@
   "download": {
     "title": "下載",
     "video": "僅下載影片",
-    "subtitle": "僅下載字幕",
+    "subtitle": "僅下載原始英文字幕",
+    "translatedSubtitle": "僅下載已翻譯字幕",
     "all": "下載影片與字幕",
     "cancel": "取消下載"
   },

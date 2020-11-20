@@ -46,18 +46,17 @@ export class VideoDownloaderPage {
     }
   }
 
-  downloadAll() {
+  downloadSubtitle() {
     try {
-      this.videoDownloadService.downloadSubtitle(this.url, false);
-      this.videoDownloadService.downloadVideo(this.url);
+      this.videoDownloadService.downloadSubtitle(this.url);
     } catch (error) {
       console.error(error);
     }
   }
 
-  downloadSubtitle() {
+  downloadTranslatedSubtitle() {
     try {
-      this.videoDownloadService.downloadSubtitle(this.url);
+      this.videoDownloadService.downloadSubtitle(this.url, 'zh-Hant');
     } catch (error) {
       console.error(error);
     }

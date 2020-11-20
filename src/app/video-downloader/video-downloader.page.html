@@ -59,15 +59,6 @@
             <ion-button
               expand="block"
               size="default"
-              (click)="downloadAll()"
-              [disabled]="(isDownloading$ | async) || !url"
-            >
-              {{ t('video.download.all') }}
-            </ion-button>
-
-            <ion-button
-              expand="block"
-              size="default"
               (click)="downloadVideo()"
               [disabled]="(isDownloading$ | async) || !url"
             >
@@ -81,6 +72,15 @@
               [disabled]="(isDownloading$ | async) || !url"
             >
               {{ t('video.download.subtitle') }}
+            </ion-button>
+
+            <ion-button
+              expand="block"
+              size="default"
+              (click)="downloadTranslatedSubtitle()"
+              [disabled]="(isDownloading$ | async) || !url"
+            >
+              {{ t('video.download.translatedSubtitle') }}
             </ion-button>
           </div>
         </div>
